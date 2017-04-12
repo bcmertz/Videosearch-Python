@@ -17,8 +17,8 @@ import boto3
 #configure s3 boto3 connection
 s3 = boto3.resource(
     's3',
-    aws_access_key_id=process.env.AWS_ACCESS_KEY_ID,
-    aws_secret_access_key=process.env.AWS_SECRET_ACCESS_KEY
+    aws_access_key_id=os.environ.get("AWS_ACCESS_KEY_ID"),
+    aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY")
 )
 # os.environ.get("AWS_ACCESS_KEY_ID")
 # os.environ.get("AWS_SECRET_ACCESS_KEY")
