@@ -21,6 +21,13 @@ from stream import parseStream, awsSave, sendNode
 app = Flask(__name__)
 # from scikit-image import structural_similarity as ssim
 
+#configure s3 boto3 connection
+s3 = boto3.resource(
+    's3',
+    aws_access_key_id=os.environ["AWS_ACCESS_KEY_ID"],
+    aws_secret_access_key=os.environ["AWS_SECRET_ACCESS_KEY"]
+)
+
 @app.route('/parse', methods=['POST'])
 def parse():
     cgitb.enable()

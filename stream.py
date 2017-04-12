@@ -18,12 +18,12 @@ import boto3
 #state variables here
 arr1 = []
 
-#configure s3 boto3 connection
-s3 = boto3.resource(
-    's3',
-    aws_access_key_id=process.env.AWS_ACCESS_KEY_ID,
-    aws_secret_access_key=process.env.AWS_SECRET_ACCESS_KEY
-)
+# #configure s3 boto3 connection
+# s3 = boto3.resource(
+#     's3',
+#     aws_access_key_id=process.env.AWS_ACCESS_KEY_ID,
+#     aws_secret_access_key=process.env.AWS_SECRET_ACCESS_KEY
+# )
 
 #mean squared error calculation
 def mse(imageA, imageB):
