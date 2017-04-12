@@ -6,7 +6,6 @@ import requests
 import cgi
 import cgitb
 from io import StringIO
-import pycurl
 import json
 from io import BytesIO
 import math
