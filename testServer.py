@@ -13,8 +13,8 @@ import numpy as np
 import time
 import cv2
 import boto3
-from scikit-image import structural_similarity as ssim
-# from skimage.measure import structural_similarity as ssim
+# from scikit-image import structural_similarity as ssim
+from skimage.measure import structural_similarity as ssim
 from video import parseVideo, awsSave, arr1
 from stream import parseStream, awsSave, sendNode
 app = Flask(__name__)
