@@ -11,8 +11,8 @@ from io import BytesIO
 import math
 import numpy as np
 import time
-import cv2
 import boto3
+import cv2
 from skimage.measure import structural_similarity as ssim
 from video import parseVideo, awsSave, arr1
 from stream import parseStream, awsSave, sendNode
