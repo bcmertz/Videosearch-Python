@@ -1,5 +1,4 @@
 ##use this file to parse apart an uploaded video file of definite length
-
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import socketserver
 import requests
@@ -14,7 +13,6 @@ import time
 from skimage.measure import structural_similarity as ssim
 import cv2
 import boto3
-import classify_image
 
 #import s3 configuration credentials
 exec(compile(open("./configuration.py").read(), "./configuration.py", 'exec'))
@@ -107,4 +105,3 @@ def awsSave(arr):
         )
         url = 'https://s3-us-west-1.amazonaws.com/'+str(bucket)+'/'+str(val)
         arr1.append(url)
-        classify_image();

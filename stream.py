@@ -14,7 +14,6 @@ import time
 from skimage.measure import structural_similarity as ssim
 import cv2
 import boto3
-import classify_image
 
 #state variables here
 arr1 = []
@@ -112,7 +111,6 @@ def awsSave(arr, counter):
         print('first image')
         arr1.append(url)
     arr1[0] = url
-    classify_image();
     print('awsSave arr1:', arr1)
     sendNode(arr1)
     return
