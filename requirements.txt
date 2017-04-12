@@ -1,5 +1,5 @@
 requests==2.13.0
-cv2==3.0.0
+opencv==3.0.0
 boto3==1.4.4
 numpy==1.12.1
 equests==2.13.0
