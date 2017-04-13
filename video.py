@@ -45,7 +45,6 @@ def parseVideo(videoFile):
     fps = int(round(vidcap.get(cv2.CAP_PROP_FPS))) # Gets the frames per second
     multiplier = fps * seconds
     while success:
-		print('here')
         frameId = int(round(vidcap.get(1))) #current frame number, rounded b/c sometimes you get frame intervals which aren't integers...this adds a little imprecision but is likely good enough
         oldimage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) #oldimage compared against newimage to see if we should save a pic
         success, image = vidcap.read() #grabs the next frame, if that was successful the loop will continue after this iteration
