@@ -69,6 +69,7 @@ def parseVideo(videoFile):
     seconds = 2 #check every so many seconds
     counter = 1
     fps = int(round(vidcap.get(cv2.CAP_PROP_FPS))) # Gets the frames per second
+    print('fps', fps)
     multiplier = fps * seconds
     while success:
         frameId = int(round(vidcap.get(1))) #current frame number, rounded b/c sometimes you get frame intervals which aren't integers...this adds a little imprecision but is likely good enough
