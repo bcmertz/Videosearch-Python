@@ -30,13 +30,14 @@ s3 = boto3.resource(
 
 @app.route('/parse', methods=['POST'])
 def parse():
-    cgitb.enable()
-
-    content_len = int(self.headers.get('Content-Length'))
-    post_body = self.rfile.read(content_len)
-    videoFile = post_body.decode("utf-8")
-    print('videoFile address', videoFile)
-
+    # cgitb.enable()
+    # content_len = int(self.headers.get('Content-Length'))
+    # post_body = self.rfile.read(content_len)
+    # videoFile = post_body.decode("utf-8")
+    # print('videoFile address', videoFile)
+    print('~~args~~~~~~~~~~~~~~~~~~~~~~~~~', request)
+    print('~~form~~~~~~~~~~~~~~~~~~~~~~~~~~', request.form['source'])
+    videoFile = request.form['source']
     fileType = videoFile[0]
     if fileType == 's':
         print('upload type : stream')
