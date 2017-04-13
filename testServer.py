@@ -62,10 +62,10 @@ def parse():
 
 def parseVideo(videoFile):
     print("parseVideo", videoFile)
-    print('testy', videoFile, str(videoFile))
     arr = []
     vidcap = cv2.VideoCapture('https://www.w3schools.com/html/mov_bbb.mp4') #set videoFile to 0 to capture from webcam
     success,image = vidcap.read()
+    print('success', success)
     seconds = 2 #check every so many seconds
     counter = 1
     fps = int(round(vidcap.get(cv2.CAP_PROP_FPS))) # Gets the frames per second
