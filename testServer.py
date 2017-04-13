@@ -63,7 +63,7 @@ def parse():
 def parseVideo(videoFile):
     print("parseVideo", videoFile)
     arr = []
-    vidcap = cv2.VideoCapture(videoFile) #set videoFile to 0 to capture from webcam
+    vidcap = cv2.VideoCapture('https://www.w3schools.com/html/mov_bbb.mp4') #set videoFile to 0 to capture from webcam
     success,image = vidcap.read()
     print('success', success)
     seconds = 2 #check every so many seconds
