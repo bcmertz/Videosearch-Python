@@ -42,6 +42,7 @@ def parseVideo(videoFile):
     success,image = vidcap.read()
     seconds = 2 #check every so many seconds
     counter = 1
+	print('success:', success)
     fps = int(round(vidcap.get(cv2.CAP_PROP_FPS))) # Gets the frames per second
     multiplier = fps * seconds
     while success:

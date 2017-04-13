@@ -52,11 +52,11 @@ def parse():
         print ("Video Parsing Complete, sending data to node server")
         #POST BACK TO NODE SERVER THE LINKS FROM AWS
         payload = {
-        'source': arr1
+            'source': arr1
         }
         headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
         res = requests.post('https://guarded-caverns-22086.herokuapp.com/predict', headers=headers, data=json.dumps(payload))
-    return
+    return 'complete'
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
