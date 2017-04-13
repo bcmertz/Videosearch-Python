@@ -1,5 +1,5 @@
 requests==2.13.0
-opencv-python==3.1.0.4
+opencv==3.2.0.6
 boto3==1.4.4
 numpy==1.12.1
 scikit-image==0.13.0

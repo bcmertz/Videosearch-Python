@@ -64,14 +64,14 @@ def parseVideo(videoFile):
     print("parseVideo", videoFile)
     arr = []
     vidcap = cv2.VideoCapture('https://www.w3schools.com/html/mov_bbb.mp4') #set videoFile to 0 to capture from webcam
+    success,image = vidcap.read()
+    print('success', success)
     seconds = 2 #check every so many seconds
     counter = 1
-    while (vidcap.isOpened()):
-        success,image = vidcap.read()
-        print('success', success)
-        fps = int(round(vidcap.get(cv2.CAP_PROP_FPS))) # Gets the frames per second
-        print('fps', fps)
-        multiplier = fps * seconds
+    fps = int(round(vidcap.get(cv2.CAP_PROP_FPS))) # Gets the frames per second
+    print('fps', fps)
+    multiplier = fps * seconds
+    while success:
         frameId = int(round(vidcap.get(1))) #current frame number, rounded b/c sometimes you get frame intervals which aren't integers...this adds a little imprecision but is likely good enough
         oldimage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) #oldimage compared against newimage to see if we should save a pic
         success, image = vidcap.read() #grabs the next frame, if that was successful the loop will continue after this iteration
