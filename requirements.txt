@@ -1,5 +1,5 @@
 requests==2.13.0
-opencv-python==./opencv-3.2.0.zip
+opencv-python==https://github.com/opencv/opencv/archive/3.2.0.zip
 boto3==1.4.4
 numpy==1.12.1
 scikit-image==0.13.0
