@@ -7,7 +7,6 @@ npm-debug.log
 s3.yaml
 configuration.py
 *.jpg
-*.whl
 server.py.bak
 __pycache__
 components/
