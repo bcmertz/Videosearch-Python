@@ -17,7 +17,6 @@ import boto3
 from video import parseVideo, awsSave, arr1
 # from stream import parseStream, awsSave, sendNode
 
-
 class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         print ("in post method")
