@@ -83,7 +83,7 @@ def parseVideo(videoFile):
                     })
                     #append name of image to array and get ready to process the next frame
         except:
-            success = true
+            success = True
             print("err")
     vidcap.release()
     print('about to save the following pics:', arr)
