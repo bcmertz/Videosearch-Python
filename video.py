@@ -12,7 +12,7 @@ import math
 import numpy as np
 import time
 from skimage import measure
-#import cv2
+import cv2
 import boto3
 # import classify_image
 
