@@ -10,3 +10,4 @@ configuration.py
 *.zip
 server.py.bak
 __pycache__
+.vagrant

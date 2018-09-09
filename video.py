@@ -11,10 +11,12 @@ from io import BytesIO
 import math
 import numpy as np
 import time
-from skimage.measure import structural_similarity as ssim
-import cv2
+from skimage import measure
+#import cv2
 import boto3
 # import classify_image
+
+ssim = measure.compare_ssim
 
 #import s3 configuration credentials
 exec(compile(open("./configuration.py").read(), "./configuration.py", 'exec'))

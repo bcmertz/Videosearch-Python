@@ -11,11 +11,13 @@ from io import BytesIO
 import math
 import numpy as np
 import time
-from skimage.measure import structural_similarity as ssim
-import cv2
+from skimage import measure
+#import cv2
 import boto3
 from video import parseVideo, awsSave, arr1
 # from stream import parseStream, awsSave, sendNode
+
+ssim = measure.structural_similarity
 
 class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
