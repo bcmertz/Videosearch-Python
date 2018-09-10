@@ -1,6 +1,6 @@
 #!/bin/sh
 
-yum -y install epel-release
+yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 yum -y localinstall \
     --nogpgcheck \
     https://download1.rpmfusion.org/free/el/rpmfusion-free-release-7.noarch.rpm \
