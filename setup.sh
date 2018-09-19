@@ -32,24 +32,29 @@ yum -y install \
     eigen3-devel \
     && echo all done!
 
-if test ! -f /tmp/opencv.zip
-then
-    curl -LSso /tmp/opencv.zip https://github.com/opencv/opencv/archive/3.4.3.zip
-    cd /tmp
-    unzip opencv.zip
-fi
-cd /tmp/opencv-3.4.3
-mkdir -p build
-cd build
-cmake \
-    -D CMAKE_BUILD_TYPE=RELEASE \
-    -D CMAKE_INSTALL_PREFIX=/usr/local \
-    ..
-make
-make install
-echo 'export PYTHONPATH=/usr/local/lib/python3.4/site-packages' > /etc/profile.d/opencv.sh
+######UNCOMMENT IF YOU WANT TO COMPILE ON YOUR SERVER OR LOCAL MACHINE#########
+#if test ! -f /tmp/opencv.zip
+#then
+#    curl -LSso /tmp/opencv.zip https://github.com/opencv/opencv/archive/3.4.3.zip
+#    cd /tmp
+#    unzip opencv.zip
+#fi
+#cd /tmp/opencv-3.4.3
+#mkdir -p build
+#cd build
+#cmake \
+#    -D CMAKE_BUILD_TYPE=RELEASE \
+#    -D CMAKE_INSTALL_PREFIX=/usr/local \
+#    ..
+#make
+#make install
+
+
+cd /home/centos/Videosearch-Python
 
 pip3 install --upgrade pip
-
-cd ../..
 pip3 install -r requirements.txt
+
+mv lib64/* /usr/local/lib64/
+
+echo 'export PYTHONPATH=/usr/local/lib/python3.4/site-packages' > /etc/profile.d/opencv.sh
