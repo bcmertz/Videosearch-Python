@@ -1,4 +1,4 @@
-requests==2.19.1
+requests>=2.20.0
 scikit-image==0.14.0
 numpy==1.10.4
 pycurl==7.43.0
