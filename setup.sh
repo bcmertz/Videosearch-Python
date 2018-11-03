@@ -1,6 +1,6 @@
 #!/bin/sh
 
-yum -y install epel-release
+yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 yum -y localinstall \
     --nogpgcheck \
     https://download1.rpmfusion.org/free/el/rpmfusion-free-release-7.noarch.rpm \
@@ -32,6 +32,7 @@ yum -y install \
     eigen3-devel \
     && echo all done!
 
+######UNCOMMENT IF YOU WANT TO COMPILE ON YOUR SERVER OR LOCAL MACHINE#########
 #if test ! -f /tmp/opencv.zip
 #then
 #    curl -LSso /tmp/opencv.zip https://github.com/opencv/opencv/archive/3.4.3.zip
@@ -53,3 +54,5 @@ pip3 install --upgrade pip
 
 #cd ../..
 pip3 install -r requirements.txt
+
+mv lib64/* /usr/local/lib64/

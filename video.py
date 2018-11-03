@@ -43,6 +43,7 @@ def mse(imageA, imageB):
 	# the two images are
 	return err
 
+
 #parse the video into frames then call save to aws on it
 def parseVideo(videoFile):
     print("parseVideo", videoFile)
@@ -54,41 +55,57 @@ def parseVideo(videoFile):
     time = 0
     fps = int(round(vidcap.get(cv2.CAP_PROP_FPS))) # Gets the frames per second
     multiplier = fps * seconds
+
+    def imageConvert(image):
+        try:
+            greyimage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+            return greyimage
+        except:
+            return image
+
+    oldimage = imageConvert(image)
+    newimage = imageConvert(image)    
+
+
     while success:
         frameId = int(round(vidcap.get(1))) #current frame number, rounded b/c sometimes you get frame intervals which aren't integers...this adds a little imprecision but is likely good enough
-        try:
-            oldimage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) #oldimage compared against newimage to see if we should save a pic
-            success, image = vidcap.read() #grabs the next frame, if that was successful the loop will continue after this iteration
-            #image is a 2d numpy array 'numpy.ndarray', bgr I believe
-            #we can perform transformations on this array
-            if frameId % multiplier == 0:
-                print ('once everyother second similarity measurement:')
-                time+=seconds
-                #greyscale image
-                newimage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        success, image = vidcap.read() #grabs the next frame
+        #image is a 2d numpy array 'numpy.ndarray', bgr I believe
+        #we can perform transformations on this array
+        if frameId % multiplier == 0:
+            newimage = imageConvert(image)
+            if not success:
+                success = True
+            print ('once everyother second similarity measurement:')
+            time = vidcap.get(cv2.CAP_PROP_POS_MSEC) / 1000
+            #greyscale image
+            
+            s = 0
+            #m = 0
+            try:
                 #100 calculations takes: ssim - 4.37s, mse -  0.35s
-                s = ssim(oldimage, newimage) #10 times slower but is able to detect more types of changes outside of color
-                #s = similarity
-                m = mse(oldimage, newimage) #not used for now but can be to speed performance
-                #m = error
-                #write image locally if oldimage and newimage differ in pixel composition enough
-                print('~~~~~~~~sssssssssssssim~~~~~~~~~~:', s)
-                print('~~~~~~~~mmmmmmmmmmmmmse~~~~~~~~~~:', m)
-                if s<=.95:
+                s = ssim(oldimage, newimage) #10 times slower but is able to detect more types of changes outside of color   #similarity
+                #m = mse(oldimage, newimage) #not used for now but can be to speed performance   #error
+            except:
+                s = 1
+                success, image = vidcap.read()
+                newimage = imageConvert(image)
+                #m = 1
+            #write image locally if oldimage and newimage differ in pixel composition enough
+            print('~~~~~~~~sssssssssssssim~~~~~~~~~~:', s)
+            oldimage = newimage
+            if s<=.95:
                     filenameuploaded = 'pics'+str(counter)+'.jpg'
                     cv2.imwrite(filenameuploaded, image) #writes an image of type 'numpy.ndarray' from nongreyscale image
                     print ('statistically relevant difference, will save image')
                     counter+=1
                     arr.append({
-                    'filenameuploaded':filenameuploaded,
-                    'time': time
+                            'filenameuploaded':filenameuploaded,
+                            'time': time
                     })
-                    #append name of image to array and get ready to process the next frame
-        except:
-            success, image = vidcap.read()
-            if not success:
-                success = True
-            print("err")
+            #append name of image to array and get ready to process the next frame
+
+
     vidcap.release()
     print('about to save the following pics:', arr)
     awsSave(arr) #HERE WE SAVE TO AWS
