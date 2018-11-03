@@ -48,13 +48,11 @@ yum -y install \
 #    ..
 #make
 #make install
-
-
-cd /home/centos/Videosearch-Python
+echo 'export PYTHONPATH=/usr/local/lib/python3.4/site-packages' > /etc/profile.d/opencv.sh
 
 pip3 install --upgrade pip
+
+#cd ../..
 pip3 install -r requirements.txt
 
 mv lib64/* /usr/local/lib64/
-
-echo 'export PYTHONPATH=/usr/local/lib/python3.4/site-packages' > /etc/profile.d/opencv.sh

@@ -38,22 +38,22 @@ Vagrant.configure("2") do |config|
       eigen3-devel \
     && echo all done!
 
-    if test ! -f /tmp/opencv.zip
-    then
-      curl -LSso /tmp/opencv.zip https://github.com/opencv/opencv/archive/3.4.3.zip
-      cd /tmp
-      unzip opencv.zip
-    fi
-    cd /tmp/opencv-3.4.3
-    mkdir -p build
-    cd build
-    cmake \
-      -D CMAKE_BUILD_TYPE=RELEASE \
-      -D CMAKE_INSTALL_PREFIX=/usr/local \
-      ..
-    make
-    make install
-    echo 'export PYTHONPATH=/usr/local/lib/python3.4/site-packages' > /etc/profile.d/opencv.sh
+#    if test ! -f /tmp/opencv.zip
+#    then
+#      curl -LSso /tmp/opencv.zip https://github.com/opencv/opencv/archive/3.4.3.zip
+#      cd /tmp
+#      unzip opencv.zip
+#    fi
+#    cd /tmp/opencv-3.4.3
+#    mkdir -p build
+#    cd build
+#    cmake \
+#      -D CMAKE_BUILD_TYPE=RELEASE \
+#      -D CMAKE_INSTALL_PREFIX=/usr/local \
+#      ..
+#    make
+#    make install
+#    echo 'export PYTHONPATH=/usr/local/lib/python3.4/site-packages' > /etc/profile.d/opencv.sh
 
     pip3 install --upgrade pip
 
